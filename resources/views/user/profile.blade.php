@@ -46,8 +46,8 @@
                                 <input type="hidden" id="webapp"  name="webapp" value="DCC" />
                                 <input type="hidden" id="id"  name="id" value="{{ $User->id}}" />
 
-                                <label for="name">Login Name:</label>
-                                <input type="text" id="name" class="form-control" name="name"   value="{{ $User->name}}" placeholder="Login Name"   />
+                                {{-- <label for="name">Login Name:</label>
+                                <input type="text" id="name" class="form-control" name="name"   value="{{ $User->name}}" placeholder="Login Name"   /> --}}
 
 
                                 <label for="fullname">ชื่อผู้ใช้งาน :</label>

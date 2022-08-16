@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('img_group',50)->default('')->nullable();
             $table->string('img_thumb',200)->default('')->nullable();
             $table->string('new_th_title',500)->default('')->nullable();
-            $table->mediumText('new_th_detail')->default('')->nullable();
+            $table->mediumText('new_th_detail')->nullable();
             $table->string('new_en_title',500)->default('')->nullable();
-            $table->mediumText('new_en_detail')->default('')->nullable();
+            $table->mediumText('new_en_detail')->nullable();
             $table->string('new_status',50)->default('Y')->nullable();
             $table->string('create_by',200)->nullable()->default('');
             $table->string('create_time',50)->nullable()->default('');

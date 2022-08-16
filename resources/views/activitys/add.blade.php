@@ -30,7 +30,7 @@
     <link href="/asset/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
     <script src="/asset/summernote-0.8.18-dist/summernote.min.js"></script>
     <style>
-        .note-group-select-from-files {
+        .note-group-image-url {
             display: none;
         }
     </style>
@@ -186,10 +186,14 @@
             $('#menu_toggle').click();
         });
     </script>
-    <script>
+     <script>
         $(document).ready(function() {
-            $('#new_th_detail').summernote();
-            $('#new_en_detail').summernote();
+            $('#new_th_detail').summernote({
+                height: 450,
+            });
+            $('#new_en_detail').summernote({
+                height: 450,
+            });
         });
     </script>
 @endsection

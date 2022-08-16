@@ -29,7 +29,7 @@
 
     <!-- include summernote css/js -->
     <link href="/asset/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
-    <script src="/asset/summernote-0.8.18-dist/summernote.js"></script>
+    <script src="/asset/summernote-0.8.18-dist/summernote.min.js"></script>
     <style>
         .note-group-image-url {
             display: none;

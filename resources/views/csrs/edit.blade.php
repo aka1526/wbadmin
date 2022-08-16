@@ -30,10 +30,10 @@
      <link href="/asset/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
      <script src="/asset/summernote-0.8.18-dist/summernote.min.js"></script>
      <style>
-         .note-group-select-from-files {
-             display: none;
-         }
-     </style>
+        .note-group-image-url {
+            display: none;
+        }
+    </style>
 
 @endsection
 

@@ -31,7 +31,7 @@
      <link href="/asset/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
      <script src="/asset/summernote-0.8.18-dist/summernote.min.js"></script>
      <style>
-         .note-group-select-from-files {
+         .note-group-image-url {
              display: none;
          }
      </style>
@@ -138,10 +138,6 @@
 @endsection
 
 @section('footer_jscss')
-    <!-- jQuery -->
-    <script src="/asset/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/asset/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- FastClick -->
     <script src="/asset/fastclick/lib/fastclick.js"></script>

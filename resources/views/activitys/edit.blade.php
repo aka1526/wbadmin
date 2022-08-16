@@ -32,7 +32,7 @@
     <link href="/asset/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
     <script src="/asset/summernote-0.8.18-dist/summernote.min.js"></script>
     <style>
-        .note-group-select-from-files {
+        .note-group-image-url {
             display: none;
         }
     </style>
@@ -76,7 +76,7 @@
                                 <div class="col-md-12 col-sm-12 ">
                                     <label for="new_th_detail">รายละเอียด(ไทย) :</label>
 
-                                    <textarea class="form-control" id="new_th_detail" name="new_th_detail" rows="3" placeholder="รายละเอียด" required>{!! $datarow->new_th_detail !!}</textarea>
+                                    <textarea class="form-control" id="new_th_detail" name="new_th_detail" rows="5" placeholder="รายละเอียด" required>{!! $datarow->new_th_detail !!}</textarea>
 
                                 </div>
                                 <div class="col-md-12 col-sm-12 ">
@@ -89,7 +89,7 @@
                                 <div class="col-md-12 col-sm-12 ">
                                     <label for="new_en_detail">Description (eng) :</label>
 
-                                    <textarea class="form-control" id="new_en_detail" name="new_en_detail" rows="3" placeholder="Description"
+                                    <textarea class="form-control" id="new_en_detail" name="new_en_detail" rows="5" placeholder="Description"
                                         required>{!! $datarow->new_en_detail !!}</textarea>
 
                                 </div>

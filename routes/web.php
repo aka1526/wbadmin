@@ -14,6 +14,7 @@ use App\Http\Controllers\AlbumController;
 //     return view('news.index');
 // });
 
+
 // Protect Group
 Route::middleware(['auth'])->group(function(){
 

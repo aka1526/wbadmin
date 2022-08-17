@@ -51,7 +51,7 @@ class NewsController extends Controller
 
     public function save(Request $request)
     {
-        dd('save');
+       // dd('save');
         $validated = $request->validate([
             'new_th_title' => 'required',
 

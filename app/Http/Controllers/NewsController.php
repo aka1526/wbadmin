@@ -40,7 +40,7 @@ class NewsController extends Controller
         $doc_type = str_replace('/','',$request->getPathInfo());
         $doc_type = $doc_type =="" ? "/news" : $doc_type;
 
-        $dataset = News::where('doc_type','=',$doc_type)->orderBy('new_date', 'asc')->paginate($this->paging);
+        $dataset = News::where('doc_type','=',$doc_type)->orderBy('new_date', 'desc')->paginate($this->paging);
         return view($doc_type.'/index', compact('dataset','doc_type'));
     }
 

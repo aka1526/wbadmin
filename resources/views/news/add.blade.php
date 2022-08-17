@@ -30,10 +30,10 @@
          <link href="/asset/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
          <script src="/asset/summernote-0.8.18-dist/summernote.min.js"></script>
          <style>
-             .note-group-select-from-files {
-                 display: none;
-             }
-         </style>
+            .note-group-image-url {
+                display: none;
+            }
+        </style>
 @endsection
 
 @section('page_content')
@@ -170,16 +170,16 @@
             init_sparklines();
             init_flot_chart();
             init_sidebar();
-            // init_InputMask();
-            // init_daterangepicker();
-            // init_daterangepicker_right();
-            // init_daterangepicker_single_call();
-            // init_daterangepicker_reservation();
+            init_InputMask();
+            init_daterangepicker();
+            init_daterangepicker_right();
+            init_daterangepicker_single_call();
+            init_daterangepicker_reservation();
             init_skycons();
-            // init_select2();
-            // init_PNotify();
+            init_select2();
+            init_PNotify();
             init_compose();
-            // init_CustomNotification();
+            init_CustomNotification();
             init_autosize();
             init_autocomplete();
             $('#menu_toggle').click();

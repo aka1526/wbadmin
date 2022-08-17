@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\News;
 use App\Models\Uploadfile;
 use File;
+use Storage;
 
 class NewsController extends Controller
 {
@@ -44,7 +45,7 @@ class NewsController extends Controller
 
     public function add(Request $request)
     {
-        $doc_type='awards';
+        $doc_type='news';
         return view($doc_type.'.add',compact('doc_type'));
     }
 
@@ -71,6 +72,101 @@ class NewsController extends Controller
         $new_en_title = $request->new_en_title;
         $new_en_detail = $request->new_en_detail;
         $create_time = Carbon::now()->format("Y-m-d H:i:s");
+
+
+        try {
+            $new_th_detail =  $request->new_th_detail;
+            $dom = new \DomDocument('1.0', 'UTF-8');
+
+          //  $dom->substituteEntities = false;
+            $dom->loadHTML(mb_convert_encoding($new_th_detail, 'HTML-ENTITIES', 'utf-8'));
+
+            $imageFile = $dom->getElementsByTagName('img');
+
+            foreach($imageFile as $item => $image){
+                $data = $image->getAttribute('src');
+                list($type, $data) = explode(';', $data);
+                list(, $img_base64) = explode(',', $data);
+
+
+                $image_name= "/upload/" .$doc_type .'/'.$unid ;
+                $image_src= "/upload/" .$doc_type .'/'.$unid ;
+                $path = public_path() . $image_name;
+
+                if(!File::isDirectory($path)){
+
+                    File::makeDirectory($path, 0775, true, true);
+
+                }
+
+
+                $ext= $this->getextension($type);
+                $image_name=  $path."/".time().$item.$ext;
+                $image_src= $image_src."/".time().$item.$ext;
+                $imgeData = base64_decode($img_base64);
+               // file_put_contents($image_name, base64_decode($img_base64));
+            //
+
+                file_put_contents($image_name, $imgeData);
+
+
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_src);
+             }
+
+            $new_th_detail =  $dom->saveHTML( $dom->documentElement);
+
+          } catch (\Exception $e) {
+
+
+          }
+
+
+
+
+          try {
+            $new_en_detail =  $request->new_en_detail;
+            $dom = new \DomDocument('1.0', 'UTF-8');
+
+          //  $dom->substituteEntities = false;
+            $dom->loadHTML(mb_convert_encoding($new_en_detail, 'HTML-ENTITIES', 'utf-8'));
+
+            $imageFile = $dom->getElementsByTagName('img');
+
+            foreach($imageFile as $item => $image){
+                $data = $image->getAttribute('src');
+                list($type, $data) = explode(';', $data);
+                list(, $img_base64) = explode(',', $data);
+
+
+                $image_name= "/upload/" .$doc_type .'/'.$unid ;
+                $image_src= "/upload/" .$doc_type .'/'.$unid ;
+                $path = public_path() . $image_name;
+
+                if(!File::isDirectory($path)){
+
+                    File::makeDirectory($path, 0775, true, true);
+
+                }
+
+
+                $ext= $this->getextension($type);
+                $image_name=  $path."/".time().$item.$ext;
+                $image_src= $image_src."/".time().$item.$ext;
+                $imgeData = base64_decode($img_base64);
+
+                file_put_contents($image_name, $imgeData);
+              // dd($image_name);
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_src);
+             }
+
+            $new_en_detail =  $dom->saveHTML( $dom->documentElement);
+
+          } catch (\Exception $e) {
+
+
+          }
 
         $act = News::insert([
 
@@ -153,72 +249,180 @@ class NewsController extends Controller
 
         $new_th_detail = $request->new_th_detail;
 
-        try {
-            $new_th_detail =  $request->new_th_detail;
-            $dom = new \DomDocument('1.0', 'UTF-8');
+        // try {
+        //     $new_th_detail =  $request->new_th_detail;
+        //     $dom = new \DomDocument('1.0', 'UTF-8');
 
-          //  $dom->substituteEntities = false;
-            $dom->loadHTML(mb_convert_encoding($new_th_detail, 'HTML-ENTITIES', 'utf-8'));
+        //   //  $dom->substituteEntities = false;
+        //     $dom->loadHTML(mb_convert_encoding($new_th_detail, 'HTML-ENTITIES', 'utf-8'));
 
-            $imageFile = $dom->getElementsByTagName('img');
+        //     $imageFile = $dom->getElementsByTagName('img');
 
-            foreach($imageFile as $item => $image){
-                $data = $image->getAttribute('src');
-                list($type, $data) = explode(';', $data);
-                list($ext, $data)      = explode(',', $data);
+        //     foreach($imageFile as $item => $image){
+        //         $data = $image->getAttribute('src');
+        //         list($type, $data) = explode(';', $data);
+        //         list($ext, $data)      = explode(',', $data);
 
-                $ext= $this->getextension($type);
-                $imgeData = base64_decode($data);
-                $image_name= "/upload/" .$doc_type .'/'.$unid.'/'. time().$item.$ext;
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
+        //         $ext= $this->getextension($type);
+        //         $imgeData = base64_decode($data);
+        //         $image_name= "/upload/" .$doc_type .'/'.$unid ;
+        //         $path = public_path() . $image_name;
 
-                $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
-             }
+        //         if(!File::isDirectory($path)){
 
-            $new_th_detail =  $dom->saveHTML( $dom->documentElement);
+        //             File::makeDirectory($path, 0777, true, true);
 
-          } catch (\Exception $e) {
+        //         }
 
+        //         file_put_contents($path, $imgeData);
+        //         $image_name= "/upload/" .$doc_type .'/'.$unid.'/'. time().$item.$ext;
+        //         $image->removeAttribute('src');
+        //         $image->setAttribute('src', $image_name);
+        //      }
 
-          }
+        //     $new_th_detail =  $dom->saveHTML( $dom->documentElement);
 
-          try {
-            $new_en_detail =  $request->new_en_detail;
-            $dom = new \DomDocument('1.0', 'UTF-8');
-
-          //  $dom->substituteEntities = false;
-            $dom->loadHTML(mb_convert_encoding($new_en_detail, 'HTML-ENTITIES', 'utf-8'));
-
-            $imageFile = $dom->getElementsByTagName('img');
-
-            foreach($imageFile as $item => $image){
-                $data = $image->getAttribute('src');
-                list($type, $data) = explode(';', $data);
-                list(, $data)      = explode(',', $data);
-                $ext= $this->getextension($type);
-                $imgeData = base64_decode($data);
-                $image_name= "/upload/" .$doc_type .'/'.$unid.'/'. time().$item.$ext;
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
-
-                $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
-             }
-
-            //  $doc = new DOMDocument('1.0', 'UTF-8');
-            //  $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
-            //  print $doc->saveHTML($doc->documentElement) . PHP_EOL . PHP_EOL;
-
-            $new_en_detail =  $dom->saveHTML( $dom->documentElement);
-
-          } catch (\Exception $e) {
+        //   } catch (\Exception $e) {
 
 
-          }
+        //   }
+
+        //   try {
+        //     $new_en_detail =  $request->new_en_detail;
+        //     $dom = new \DomDocument('1.0', 'UTF-8');
+
+        //   //  $dom->substituteEntities = false;
+        //     $dom->loadHTML(mb_convert_encoding($new_en_detail, 'HTML-ENTITIES', 'utf-8'));
+
+        //     $imageFile = $dom->getElementsByTagName('img');
+
+        //     foreach($imageFile as $item => $image){
+        //         $data = $image->getAttribute('src');
+        //         list($type, $data) = explode(';', $data);
+        //         list(, $data)      = explode(',', $data);
+        //         $ext= $this->getextension($type);
+        //         $imgeData = base64_decode($data);
+        //         $image_name= "/upload/" .$doc_type .'/'.$unid;
+        //         $path = public_path() . $image_name;
+        //         if(!File::isDirectory($path)){
+
+        //             File::makeDirectory($path, 0777, true, true);
+
+        //         }
+        //         $image_name= "/upload/" .$doc_type .'/'.$unid.'/'. time().$item.$ext;
+        //         file_put_contents($path, $imgeData);
+
+        //         $image->removeAttribute('src');
+        //         $image->setAttribute('src', $image_name);
+        //      }
+
+        //     //  $doc = new DOMDocument('1.0', 'UTF-8');
+        //     //  $doc->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
+        //     //  print $doc->saveHTML($doc->documentElement) . PHP_EOL . PHP_EOL;
+
+        //     $new_en_detail =  $dom->saveHTML( $dom->documentElement);
+
+        //   } catch (\Exception $e) {
+
+
+        //   }
 
       //  dd($content );
+
+
+      try {
+        $new_th_detail =  $request->new_th_detail;
+        $dom = new \DomDocument('1.0', 'UTF-8');
+
+      //  $dom->substituteEntities = false;
+        $dom->loadHTML(mb_convert_encoding($new_th_detail, 'HTML-ENTITIES', 'utf-8'));
+
+        $imageFile = $dom->getElementsByTagName('img');
+
+        foreach($imageFile as $item => $image){
+            $data = $image->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $img_base64) = explode(',', $data);
+
+
+            $image_name= "/upload/" .$doc_type .'/'.$unid ;
+            $image_src= "/upload/" .$doc_type .'/'.$unid ;
+            $path = public_path() . $image_name;
+
+            if(!File::isDirectory($path)){
+
+                File::makeDirectory($path, 0775, true, true);
+
+            }
+
+
+            $ext= $this->getextension($type);
+            $image_name=  $path."/".time().$item.$ext;
+            $image_src= $image_src."/".time().$item.$ext;
+            $imgeData = base64_decode($img_base64);
+           // file_put_contents($image_name, base64_decode($img_base64));
+        //
+
+            file_put_contents($image_name, $imgeData);
+
+
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_src);
+         }
+
+        $new_th_detail =  $dom->saveHTML( $dom->documentElement);
+
+      } catch (\Exception $e) {
+
+
+      }
+
+
+
+
+      try {
+        $new_en_detail =  $request->new_en_detail;
+        $dom = new \DomDocument('1.0', 'UTF-8');
+
+      //  $dom->substituteEntities = false;
+        $dom->loadHTML(mb_convert_encoding($new_en_detail, 'HTML-ENTITIES', 'utf-8'));
+
+        $imageFile = $dom->getElementsByTagName('img');
+
+        foreach($imageFile as $item => $image){
+            $data = $image->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $img_base64) = explode(',', $data);
+
+
+            $image_name= "/upload/" .$doc_type .'/'.$unid ;
+            $image_src= "/upload/" .$doc_type .'/'.$unid ;
+            $path = public_path() . $image_name;
+
+            if(!File::isDirectory($path)){
+
+                File::makeDirectory($path, 0775, true, true);
+
+            }
+
+
+            $ext= $this->getextension($type);
+            $image_name=  $path."/".time().$item.$ext;
+            $image_src= $image_src."/".time().$item.$ext;
+            $imgeData = base64_decode($img_base64);
+
+            file_put_contents($image_name, $imgeData);
+          // dd($image_name);
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_src);
+         }
+
+        $new_en_detail =  $dom->saveHTML( $dom->documentElement);
+
+      } catch (\Exception $e) {
+
+
+      }
 
         $act=  News::where('unid','=',$unid)->update([
 

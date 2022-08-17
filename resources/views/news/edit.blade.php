@@ -94,13 +94,13 @@
                                 </div>
                                 <div class="col-md-12 col-sm-12 ">
                                     <br/>
-                                    <img src="/upload/{{ $datarow->doc_type }}/{{ $datarow->unid }}/{{ $datarow->img_thumb }}" >
+                                    <img src="/upload/{{ $datarow->doc_type }}/{{ $datarow->unid }}/thumbnails/{{ $datarow->img_thumb }}" >
 
                                 </div>
 
                                 <div class="col-md-12 col-sm-12">
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">รูปหัวข้อ</label>
+                                            <label for="img_thumb">รูปหัวข้อ</label>
                                             <input type="file" class="form-control-file" id="img_thumb" name="img_thumb" data-show-preview="true" >
                                           </div>
 

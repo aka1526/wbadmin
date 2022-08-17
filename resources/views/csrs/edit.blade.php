@@ -94,7 +94,7 @@
                                 </div>
                                 <div class="col-md-12 col-sm-12 ">
                                     <br/>
-                                    <img src="/upload/{{ $datarow->doc_type }}/{{ $datarow->unid }}/{{ $datarow->img_thumb }}" >
+                                    <img src="/upload/{{ $datarow->doc_type }}/{{ $datarow->unid }}/thumbnails/{{ $datarow->img_thumb }}" >
 
                                 </div>
 

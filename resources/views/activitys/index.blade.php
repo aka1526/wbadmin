@@ -60,7 +60,9 @@
                                     timer: 1300,
                                     icon: 'success',
                                     confirmButtonText: 'OK'
-                                    })
+                                    }).then(() => {
+                                            location.reload();
+                                        });
                                  </script>
                               @endif
 

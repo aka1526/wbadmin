@@ -53,16 +53,24 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
-                            @if(session()->get('msg'))
+                            @if(session()->has('msg') )
+
                                 <script>
+
                                     Swal.fire({
-                                    title: 'บันทึกข้อมูลสำเร็จ!',
+                                    title: 'บันทึกข้อมูลสำเร็จ!' ,
                                     timer: 1300,
                                     icon: 'success',
                                     confirmButtonText: 'OK'
-                                    })
+                                    }).then(() => {
+                                            location.reload();
+                                        });
                                  </script>
+
                               @endif
+
+
+
 
                             <div class="table-responsive">
                                 <table class="table table-striped jambo_table bulk_action">

@@ -13,6 +13,7 @@ use App\Models\News;
 use App\Models\Uploadfile;
 use File;
 use Storage;
+use Session;
 
 class NewsController extends Controller
 {
@@ -208,7 +209,7 @@ class NewsController extends Controller
         $unid =$request->unid;
         $datarow = News::where('unid','=',$unid)->first();
         $doc_type=$datarow->doc_type;
-        return view($doc_type.'.edit' ,compact('datarow'));
+        return view($doc_type.'.edit' ,compact('datarow')) ;
     }
 
     function getextension( $extension){
@@ -448,9 +449,10 @@ class NewsController extends Controller
                 }
 
             }
+            return redirect($doc_type)->with('msg', $act);
         }
 
-    return redirect($doc_type)->with('msg', $act);
+     return redirect($doc_type);
     }
 
     function delete(Request $request){

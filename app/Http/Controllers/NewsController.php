@@ -91,7 +91,7 @@ class NewsController extends Controller
 
 
                 $image_name= "/upload/" .$doc_type .'/'.$unid ;
-                $image_src= "/upload/" .$doc_type .'/'.$unid ;
+                $image_src= "http://wbadmin.p-quality.com/upload/".$doc_type .'/'.$unid ;
                 $path = public_path() . $image_name;
 
                 if(!File::isDirectory($path)){
@@ -141,7 +141,7 @@ class NewsController extends Controller
 
 
                 $image_name= "/upload/" .$doc_type .'/'.$unid ;
-                $image_src= "/upload/" .$doc_type .'/'.$unid ;
+                $image_src= "http://wbadmin.p-quality.com/upload/" .$doc_type .'/'.$unid ;
                 $path = public_path() . $image_name;
 
                 if(!File::isDirectory($path)){
@@ -347,7 +347,7 @@ class NewsController extends Controller
 
 
             $image_name= "/upload/" .$doc_type .'/'.$unid ;
-            $image_src= "/upload/" .$doc_type .'/'.$unid ;
+            $image_src= "http://wbadmin.p-quality.com/upload/" .$doc_type .'/'.$unid ;
             $path = public_path() . $image_name;
 
             if(!File::isDirectory($path)){
@@ -397,7 +397,7 @@ class NewsController extends Controller
 
 
             $image_name= "/upload/" .$doc_type .'/'.$unid ;
-            $image_src= "/upload/" .$doc_type .'/'.$unid ;
+            $image_src= "http://wbadmin.p-quality.com/upload/" .$doc_type .'/'.$unid ;
             $path = public_path() . $image_name;
 
             if(!File::isDirectory($path)){

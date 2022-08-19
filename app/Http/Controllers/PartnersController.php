@@ -100,7 +100,7 @@ class PartnersController extends Controller
     function edit(Request $request){
         $unid =$request->unid;
         $datarow = Partners::where('unid','=',$unid)->first();
-        $doc_type="Partners";
+        $doc_type="partners";
         return view($doc_type.'.edit' ,compact('datarow')) ;
     }
 

@@ -70,7 +70,7 @@
 
                                 <div class="col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <label for="slidesimg_img">รูป</label>
+                                        <label for="slidesimg_img">รูป ขนาดรูป 700x300px</label>
                                         <input type="file" class="form-control-file" id="slidesimg_img" name="slidesimg_img"
                                             data-show-preview="true">
                                     </div>

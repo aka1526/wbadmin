@@ -189,7 +189,7 @@ function updateprofile(Request $request){
     ]);
 
     $msg="บันทึกสำเร็จ";
-    return redirect('/')->with('msg', $msg);
+    return redirect('/news')->with('msg', $msg);
 
 }
 
@@ -221,7 +221,7 @@ function updateuserpwd(Request $request){
     ]);
 
     $msg="บันทึกสำเร็จ";
-     return  redirect('/')->with('msg', $msg);
+     return  redirect('/news')->with('msg', $msg);
 }
 
 }

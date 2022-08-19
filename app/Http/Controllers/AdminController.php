@@ -182,7 +182,7 @@ function updateprofile(Request $request){
 
     $id= auth()->user()->id;
     $User= User::where('id','=',$id)->update([
-        'name' => $request->name,
+       // 'name' => $request->name,
         'fullname' =>$request->fullname,
 
 

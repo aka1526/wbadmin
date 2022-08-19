@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('customerlist', function (Blueprint $table) {
             $table->biginteger('unid')->primary();
-            $table->mediumText('cus_list')->nullable()->default('');
+            $table->mediumText('cus_list')->nullable();
             $table->string('create_by',200)->nullable()->default('');
             $table->string('create_time',50)->nullable()->default('');
             $table->string('modify_by',200)->nullable()->default('');

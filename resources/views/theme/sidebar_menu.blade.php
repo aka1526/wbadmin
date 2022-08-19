@@ -14,9 +14,9 @@ $user = auth()->user();
                 <li class="">
                     <a href="/awards">Awards </a>
                 </li>
-                <li class="">
+                {{-- <li class="">
                     <a href="/televisions">On Television</a>
-                </li>
+                </li> --}}
 
             </ul>
         </li>

@@ -121,19 +121,6 @@ Route::middleware(['auth'])->group(function(){
         Route::post('/slides/album/delete', 'deleteImg');
 
 
-
-
-        Route::get('/customers','index')->name('customers.index');
-        Route::post('/customers/save', 'save');
-        Route::get('/customers/edit/{unid}', 'edit')->name('customers.edit');
-        Route::post('/customers/update','update');
-        Route::post('/customers/delete',  'delete')->name('customers.delete');
-        Route::get('/customers/album/{unid}', 'album')->name('customers.album');
-        Route::post('/customers/album/save', 'savealbum');
-        Route::post('/customers/album/delete', 'deleteImg');
-
-
-
         });
 
         Route::controller(AlbumController::class)->group(function(){
@@ -163,7 +150,13 @@ Route::middleware(['auth'])->group(function(){
 
 
         Route::controller(CustomersController::class)->group(function(){
+            Route::get('/customers','index')->name('customers.index');
             Route::get('/customers/add', 'add')->name('customers.add');
+            Route::post('/customers/save', 'save');
+            Route::get('/customers/edit/{unid}', 'edit')->name('customers.edit');
+            Route::post('/customers/update','update');
+            Route::post('/customers/delete',  'delete')->name('customers.delete');
+           
         });
 
         Route::controller(PartnersController::class)->group(function(){

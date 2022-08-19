@@ -46,7 +46,7 @@
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>รายละเอียดข่าว<small>กรุณากรอกข้อมูล</small></h2>
+                            <h2>รายชื่อลูกค้า<small>กรุณากรอกข้อมูล</small></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
@@ -59,64 +59,18 @@
                                 <input type="hidden" id="doc_type" name="doc_type" value="{{ $doc_type }}" />
 
                                 <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_date">วันที่ :</label>
-                                    <input type="date" id="new_date" class="form-control" name="new_date" value=""
-                                        placeholder="วันที่" required />
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_th_title">หัวข้อ(ไทย) :</label>
-                                    <textarea class="form-control" id="new_th_title" name="new_th_title" rows="2" placeholder="หัวข้อ" required></textarea>
+                                    <label for="cus_list">รายละเอียด  :</label>
+
+                                    <textarea class="form-control" id="cus_list" name="cus_list" rows="5" placeholder="รายละเอียด" required></textarea>
 
                                 </div>
 
 
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_th_detail">รายละเอียด(ไทย) :</label>
+                                <div class="col-md-12 col-sm-12 mt-2">
 
-                                    <textarea class="form-control" id="new_th_detail" name="new_th_detail" rows="5" placeholder="รายละเอียด" required></textarea>
-
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_en_title">Title (eng):</label>
-                                    <textarea class="form-control" id="new_en_title" name="new_en_title" rows="2" placeholder="Title" required></textarea>
-
-
-                                </div>
-
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_en_detail">Description (eng) :</label>
-
-                                    <textarea class="form-control" id="new_en_detail" name="new_en_detail" rows="5" placeholder="Description"
-                                        required></textarea>
-
-                                </div>
-                                <div class="col-md-12 col-sm-12">
-
-
-                                    <div class="form-group">
-                                        <label for="exampleFormControlFile1">รูปหัวข้อ</label>
-                                        <input type="file" class="form-control-file" id="img_thumb" name="img_thumb"
-                                            data-show-preview="true">
-                                    </div>
-
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    </br>
-                                    <label>สถานนะ * :</label>
-                                    <p>
-
-                                        <input type="radio" class="flat" name="new_status" id="new_status_y"
-                                            value="Y" checked="" required /> เปิดใช้งาน
-                                        <input type="radio" class="flat" name="new_status" id="new_status_n"
-                                            value="N" /> ปิดใช้งาน
-                                    </p>
-                                </div>
-
-                                <br />
-                                <a href="/awards" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i> กลับ </a>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>
                                     บันทึกข้อมูล</button>
-
+                                </div>
                             </form>
                             <!-- end form for validations -->
 
@@ -188,12 +142,10 @@
     </script>
      <script>
         $(document).ready(function() {
-            $('#new_th_detail').summernote({
-                height: 450,
+            $('#cus_list').summernote({
+                height: 550,
             });
-            $('#new_en_detail').summernote({
-                height: 450,
-            });
+
         });
     </script>
 @endsection

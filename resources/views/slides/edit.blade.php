@@ -79,7 +79,7 @@
                                 <div class="col-md-12 col-sm-12 ">
                                     <label for="slidesimg_desc">Description :</label>
                                     <input type="text" id="slidesimg_desc" class="form-control" name="slidesimg_desc" value="{{ $datarow->slidesimg_desc }}"
-                                        placeholder="Description" required />
+                                        placeholder="Description"   />
                                 </div>
                                 <div class="col-md-12 col-sm-12 ">
                                     </br>

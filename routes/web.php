@@ -10,9 +10,11 @@ use App\Http\Controllers\CsrsController;
 use App\Http\Controllers\ActivitysController;
 use App\Http\Controllers\VisitorsController;
 use App\Http\Controllers\TelevisionsController;
-use App\Http\Controllers\SlidesController;
+
 use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\SlidesimgController;
+
 
 use App\Http\Controllers\AlbumController;
 // Route::get('/', function () {
@@ -159,8 +161,9 @@ Route::middleware(['auth'])->group(function(){
             Route::get('/televisions/add', 'add')->name('televisions.add');
         });
 
-        Route::controller(SlidesController::class)->group(function(){
-            Route::get('/slides/add', 'add')->name('slides.add');
+
+        Route::controller(CustomersController::class)->group(function(){
+            Route::get('/customers/add', 'add')->name('customers.add');
         });
 
         Route::controller(PartnersController::class)->group(function(){
@@ -173,8 +176,14 @@ Route::middleware(['auth'])->group(function(){
 
         });
 
-        Route::controller(CustomersController::class)->group(function(){
-            Route::get('/customers/add', 'add')->name('customers.add');
+        Route::controller(SlidesimgController::class)->group(function(){
+            Route::get('/slides','index')->name('slides.index');
+             Route::get('/slides/add', 'add')->name('slides.add');
+            Route::post('/slides/save', 'save');
+            Route::get('/slides/edit/{unid}', 'edit')->name('slides.edit');
+            Route::post('/slides/update','update');
+            Route::post('/slides/delete',  'delete')->name('slides.delete');
+
         });
 
 });

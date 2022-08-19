@@ -58,62 +58,37 @@
                                 <input type="hidden" id="unid" name="unid" value="" />
                                 <input type="hidden" id="doc_type" name="doc_type" value="{{ $doc_type }}" />
 
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_date">วันที่ :</label>
-                                    <input type="date" id="new_date" class="form-control" name="new_date" value=""
-                                        placeholder="วันที่" required />
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_th_title">หัวข้อ(ไทย) :</label>
-                                    <textarea class="form-control" id="new_th_title" name="new_th_title" rows="2" placeholder="หัวข้อ" required></textarea>
-
-                                </div>
 
 
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_th_detail">รายละเอียด(ไทย) :</label>
-
-                                    <textarea class="form-control" id="new_th_detail" name="new_th_detail" rows="5" placeholder="รายละเอียด" required></textarea>
-
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_en_title">Title (eng):</label>
-                                    <textarea class="form-control" id="new_en_title" name="new_en_title" rows="2" placeholder="Title" required></textarea>
-
-
-                                </div>
-
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_en_detail">Description (eng) :</label>
-
-                                    <textarea class="form-control" id="new_en_detail" name="new_en_detail" rows="5" placeholder="Description"
-                                        required></textarea>
-
-                                </div>
                                 <div class="col-md-12 col-sm-12">
 
 
                                     <div class="form-group">
-                                        <label for="exampleFormControlFile1">รูปหัวข้อ</label>
-                                        <input type="file" class="form-control-file" id="img_thumb" name="img_thumb"
+                                        <label for="slidesimg_img">รูป</label>
+                                        <input type="file" class="form-control-file" id="slidesimg_img" name="slidesimg_img"
                                             data-show-preview="true">
                                     </div>
 
+                                </div>
+                                <div class="col-md-12 col-sm-12 ">
+                                    <label for="slidesimg_desc">Description :</label>
+                                    <input type="text" id="slidesimg_desc" class="form-control" name="slidesimg_desc" value=""
+                                        placeholder="Description" required />
                                 </div>
                                 <div class="col-md-12 col-sm-12 ">
                                     </br>
                                     <label>สถานนะ * :</label>
                                     <p>
 
-                                        <input type="radio" class="flat" name="new_status" id="new_status_y"
+                                        <input type="radio" class="flat" name="slidesimg_status" id="slidesimg_status_y"
                                             value="Y" checked="" required /> เปิดใช้งาน
-                                        <input type="radio" class="flat" name="new_status" id="new_status_n"
+                                        <input type="radio" class="flat" name="slidesimg_status" id="slidesimg_status_n"
                                             value="N" /> ปิดใช้งาน
                                     </p>
                                 </div>
 
                                 <br />
-                                <a href="/awards" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i> กลับ </a>
+                                <a href="/slides" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i> กลับ </a>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>
                                     บันทึกข้อมูล</button>
 

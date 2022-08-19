@@ -70,12 +70,10 @@
                                 <table class="table table-striped jambo_table bulk_action">
                                   <thead>
                                     <tr class="headings">
+                                      <th class="column-title">Image  </th>
+                                      <th class="column-title">Description</th>
+                                      <th class="column-title">Status </th>
 
-                                      <th class="column-title" width="100px">วันที่ </th>
-                                      <th class="column-title">รูป title </th>
-                                      <th class="column-title">หัวข้อ(ไทย) </th>
-                                      <th class="column-title">Title (eng) </th>
-                                      <th class="column-title" width="100px">รูปกิจกรรม</th>
 
                                       <th class="column-title" width="140px">Action</th>
                                     </tr>
@@ -86,21 +84,21 @@
                                     @foreach ($dataset as $key => $row)
 
                                     <tr class="even pointer">
-                                        <td class=""> {{ $row->new_date }}</td>
+
                                         <td class="">
-                                            @if($row->img_thumb)
-                                            <img src="{{ "/upload/" .$row->doc_type.'/'.$row->unid.'/'.$row->img_thumb }}" width="120px" />
+                                            @if($row->slidesimg_img)
+                                            <img src="{{ "/upload/slides/".$row->unid.'/'.$row->slidesimg_img }}" width="120px" />
                                             @else
                                             <img src="/upload/nopic.png"  width="120px"  />
                                             @endif
 
                                         </td>
-                                        <td class="">{{ $row->new_th_title}}</td>
-                                        <td class="">{{ $row->new_en_title}}</td>
-                                        <td class=""><a href="/{{$row->doc_type}}/album/{{$row->unid}}" class="btn btn-primary btn-sm" title="รูปกิจกรรม" >กิจกรรม</a></td>
+                                        <td class="">{{ $row->slidesimg_desc}}</td>
+                                        <td class="">{{ $row->slidesimg_status}}</td>
+
 
                                         <td class=" last">
-                                            <a href="/{{$row->doc_type}}/edit/{{$row->unid}}" class="btn btn-info btn-sm" title="แก้ไข" >แก้ไข </a>
+                                            <a href="/slides/edit/{{$row->unid}}" class="btn btn-info btn-sm" title="แก้ไข" >แก้ไข </a>
                                             <a href="#" class="btn btn-delete btn-sm btn-danger "
                                             data-doc_type="{{ $row->doc_type}}"
                                             data-unid="{{ $row->unid}}" title="ลบข้อมูล" > ลบ </a>
@@ -188,7 +186,7 @@ $(document).on("click", '.btn-delete', function(e) {
 }).then((result) => {
     if(result.isConfirmed){
         var unid = $(this).data('unid');
-        var doc_type = $(this).data('doc_type');
+        var doc_type = "slides";
         var url = '/'+doc_type+'/delete';
         $.ajax({
                 type: "POST",

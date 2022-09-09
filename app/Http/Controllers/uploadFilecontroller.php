@@ -195,6 +195,54 @@ class uploadFilecontroller extends Controller
 
     }
 
+    public function saveDocument($ref_unid = '', $path_img = '', $img_group, $file)
+    {
+        $random = Str::random(3);
+        $image = $file;
+        $file_name = $file->getclientoriginalname();
+        $file_rdn_name = $random . '_' . $file->getclientoriginalname();
+        $file_extension = $file->extension();
+
+        $unid = $this->randunid();
+        $user = "sys";
+        $img_status = "Y";
+        $create_time = carbon::now()->format('y-m-d h:i:s');
+        $modify_time = carbon::now()->format('y-m-d h:i:s');
+        $path = "/upload/" . $path_img . "/" . $ref_unid;
+
+        $filePath = public_path().$path;
+
+        if (!File::isDirectory($filePath)) {
+
+            File::makeDirectory($filePath, 0777, true, true);
+
+        }
+
+      $act = $file->move( $filePath, $file_rdn_name);
+
+        if ($act) {
+            Uploadfile::insert([
+                'unid' => $unid,
+                'ref_unid' => $ref_unid,
+                'img_group' => $img_group,
+                'img_path' => $path_img,
+                'img_name' => $file_rdn_name,
+                'img_extention' => $file_extension,
+                'img_status' => $img_status,
+                'create_by' => $user,
+                'create_time' => $create_time,
+                'modify_by' => $user,
+                'modify_time' => $create_time,
+            ]);
+
+        } else {
+            $file_rdn_name = "";
+        }
+
+        return $file_rdn_name;
+
+    }
+
     public function saveLogo($ref_unid = '', $path_img = '', $img_group, $file)
     {
         $random = Str::random(3);
@@ -208,7 +256,7 @@ class uploadFilecontroller extends Controller
         $img_status = "Y";
         $create_time = carbon::now()->format('y-m-d h:i:s');
         $modify_time = carbon::now()->format('y-m-d h:i:s');
-        $path = "/upload/" . '/' . $path_img . "/" . $ref_unid . '/';
+        $path = "/upload/" . $path_img . "/" . $ref_unid . '/';
 
         $filePath = public_path() . $path;
 
@@ -223,10 +271,16 @@ class uploadFilecontroller extends Controller
         $const->aspectRatio();
         })->save($filePath.'/'.$file_rdn_name);
          */
-        $img = Image::make($image->path());
-        $act = $img->save($filePath . '/' . $file_rdn_name);
 
-        // $act = $file->move(public_path().$path, $file_rdn_name);
+         if(strtolower($file_extension)=="pdf") {
+            $act = $file->move(public_path().$filePath, $file_rdn_name);
+         } else {
+            $img = Image::make($image->path());
+            $act = $img->save($filePath . '/' . $file_rdn_name);
+         }
+
+
+        //
 
         if ($act) {
             Uploadfile::insert([

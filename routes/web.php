@@ -14,7 +14,8 @@ use App\Http\Controllers\TelevisionsController;
 use App\Http\Controllers\PartnersController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\SlidesimgController;
-
+use App\Http\Controllers\WebmenuController;
+use App\Http\Controllers\WebsubmenuController;
 
 use App\Http\Controllers\AlbumController;
 // Route::get('/', function () {
@@ -156,7 +157,7 @@ Route::middleware(['auth'])->group(function(){
             Route::get('/customers/edit/{unid}', 'edit')->name('customers.edit');
             Route::post('/customers/update','update');
             Route::post('/customers/delete',  'delete')->name('customers.delete');
-           
+
         });
 
         Route::controller(PartnersController::class)->group(function(){
@@ -178,6 +179,29 @@ Route::middleware(['auth'])->group(function(){
             Route::post('/slides/delete',  'delete')->name('slides.delete');
 
         });
+
+        Route::controller(WebmenuController::class)->group(function(){
+            Route::get('/webmenu','index')->name('webmenu.index');
+             Route::get('/webmenu/add', 'add')->name('webmenu.add');
+            Route::post('/webmenu/save', 'save');
+            Route::get('/webmenu/edit/{unid}', 'edit')->name('webmenu.edit');
+            Route::post('/webmenu/update','update');
+            Route::post('/webmenu/delete',  'delete')->name('webmenu.delete');
+
+        });
+
+        Route::controller(WebsubmenuController::class)->group(function(){
+            Route::get('/websubmenu','index')->name('submenu.index');
+             Route::get('/websubmenu/add', 'add')->name('submenu.add');
+            Route::post('/websubmenu/save', 'save');
+            Route::get('/websubmenu/edit/{unid}', 'edit')->name('submenu.edit');
+            Route::post('/websubmenu/update','update');
+            Route::post('/websubmenu/delete',  'delete')->name('submenu.delete');
+
+        });
+
+
+
 
 });
 

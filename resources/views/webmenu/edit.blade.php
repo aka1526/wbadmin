@@ -54,58 +54,51 @@
                         <div class="x_content">
 
                             <!-- start form for validation -->
-                            <form id="form-post" name="form-post" action="/partners/update"
+                            <form id="form-post" name="form-post" action="/{{ $doc_type }}/update"
                                 data-parsley-validate enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <input type="hidden" id="unid" name="unid" value="{{ $datarow->unid }}" />
+                                <input type="hidden" id="doc_type" name="doc_type" value="{{ $doc_type }}" />
+
 
                                 <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_date">Name :</label>
-                                    <input type="text" id="partners_name" class="form-control" name="partners_name" value="{{ $datarow->partners_name }}" placeholder="Partners Name" required />
-                                </div>
-
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_date">www:</label>
-                                    <input type="text" id="partners_url" class="form-control" name="partners_url" value="{{ $datarow->partners_url }}" placeholder="www" required />
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <br/>
-
-                                    <img src="/upload/partners/{{ $datarow->unid }}/{{ $datarow->partners_logo }}" >
+                                    <br />
+                                    <img
+                                        src="/upload/{{ $doc_type }}/{{ $datarow->unid }}/{{ $datarow->slidesimg_img }}">
 
                                 </div>
+
                                 <div class="col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <label for="partners_logo">รูป Logo</label>
-                                        <input type="file" class="form-control-file" id="partners_logo" name="partners_logo"
+                                        <label for="slidesimg_img">รูป ขนาดรูป 700x300px</label>
+                                        <input type="file" class="form-control-file" id="slidesimg_img" name="slidesimg_img"
                                             data-show-preview="true">
                                     </div>
 
                                 </div>
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <label for="partners_file">File เอกสาร</label>
-                                        <input type="file" class="form-control-file" id="partners_file" name="partners_file"
-                                            data-show-preview="true">
-                                    </div>
-
+                                <div class="col-md-12 col-sm-12 ">
+                                    <label for="slidesimg_desc">Description :</label>
+                                    <input type="text" id="slidesimg_desc" class="form-control" name="slidesimg_desc" value="{{ $datarow->slidesimg_desc }}"
+                                        placeholder="Description"   />
                                 </div>
                                 <div class="col-md-12 col-sm-12 ">
                                     </br>
                                     <label>สถานนะ * :</label>
                                     <p>
 
-                                        <input type="radio" class="flat" name="partners_status" id="partners_status_y"
+                                        <input type="radio" class="flat" name="slidesimg_status" id="slidesimg_status_y"
                                             value="Y" checked="" required /> เปิดใช้งาน
-                                        <input type="radio" class="flat" name="partners_status" id="partners_status_n"
+                                        <input type="radio" class="flat" name="slidesimg_status" id="slidesimg_status_n"
                                             value="N" /> ปิดใช้งาน
                                     </p>
                                 </div>
 
                                 <br />
-                                <a href="/partners" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i> กลับ </a>
+                                <a href="/{{ $doc_type }}" class="btn btn-secondary"> <i
+                                        class="fa fa-arrow-left"></i> กลับ </a>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>
                                     บันทึกข้อมูล</button>
+
                             </form>
                             <!-- end form for validations -->
 

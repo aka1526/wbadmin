@@ -21,12 +21,10 @@
 
     <!-- Custom Theme Style -->
     <link href="/custom/css/custom.min.css" rel="stylesheet">
-
     <!-- jQuery -->
     <script src="/asset/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="/asset/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
 
     <!-- include summernote css/js -->
     <link href="/asset/summernote-0.8.18-dist/summernote.min.css" rel="stylesheet">
@@ -48,64 +46,52 @@
                 <div class="col-md-12 col-sm-12 ">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>รายละเอียด<small>กรุณากรอกข้อมูล</small></h2>
+                            <h2>รายละเอียดข่าว<small>กรุณากรอกข้อมูล</small></h2>
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
 
                             <!-- start form for validation -->
-                            <form id="form-post" name="form-post" action="/partners/update"
-                                data-parsley-validate enctype="multipart/form-data" method="POST">
+                            <form id="form-post" name="form-post" action="/{{ $doc_type }}/save" data-parsley-validate
+                                enctype="multipart/form-data" method="POST">
                                 @csrf
-                                <input type="hidden" id="unid" name="unid" value="{{ $datarow->unid }}" />
+                                <input type="hidden" id="unid" name="unid" value="" />
+                                <input type="hidden" id="doc_type" name="doc_type" value="{{ $doc_type }}" />
 
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_date">Name :</label>
-                                    <input type="text" id="partners_name" class="form-control" name="partners_name" value="{{ $datarow->partners_name }}" placeholder="Partners Name" required />
-                                </div>
 
-                                <div class="col-md-12 col-sm-12 ">
-                                    <label for="new_date">www:</label>
-                                    <input type="text" id="partners_url" class="form-control" name="partners_url" value="{{ $datarow->partners_url }}" placeholder="www" required />
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <br/>
 
-                                    <img src="/upload/partners/{{ $datarow->unid }}/{{ $datarow->partners_logo }}" >
-
-                                </div>
                                 <div class="col-md-12 col-sm-12">
+
+
                                     <div class="form-group">
-                                        <label for="partners_logo">รูป Logo</label>
-                                        <input type="file" class="form-control-file" id="partners_logo" name="partners_logo"
+                                        <label for="slidesimg_img">รูป ขนาดรูป 700x300px</label>
+                                        <input type="file" class="form-control-file" id="slidesimg_img" name="slidesimg_img"
                                             data-show-preview="true">
                                     </div>
 
                                 </div>
-                                <div class="col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <label for="partners_file">File เอกสาร</label>
-                                        <input type="file" class="form-control-file" id="partners_file" name="partners_file"
-                                            data-show-preview="true">
-                                    </div>
-
+                                <div class="col-md-12 col-sm-12 ">
+                                    <label for="slidesimg_desc">Description :</label>
+                                    <input type="text" id="slidesimg_desc" class="form-control" name="slidesimg_desc" value=""
+                                        placeholder="Description"   />
                                 </div>
                                 <div class="col-md-12 col-sm-12 ">
                                     </br>
                                     <label>สถานนะ * :</label>
                                     <p>
 
-                                        <input type="radio" class="flat" name="partners_status" id="partners_status_y"
+                                        <input type="radio" class="flat" name="slidesimg_status" id="slidesimg_status_y"
                                             value="Y" checked="" required /> เปิดใช้งาน
-                                        <input type="radio" class="flat" name="partners_status" id="partners_status_n"
+                                        <input type="radio" class="flat" name="slidesimg_status" id="slidesimg_status_n"
                                             value="N" /> ปิดใช้งาน
                                     </p>
                                 </div>
 
                                 <br />
-                                <a href="/partners" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i> กลับ </a>
+                                <a href="/slides" class="btn btn-secondary"> <i class="fa fa-arrow-left"></i> กลับ </a>
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>
                                     บันทึกข้อมูล</button>
+
                             </form>
                             <!-- end form for validations -->
 
@@ -152,9 +138,10 @@
     <!-- Custom Theme Scripts -->
     <script src="/custom/js/app.js"></script>
 
-
     <script>
         $(document).ready(function() {
+
+
 
             init_sparklines();
             init_flot_chart();
@@ -174,7 +161,7 @@
             $('#menu_toggle').click();
         });
     </script>
-    <script>
+     <script>
         $(document).ready(function() {
             $('#new_th_detail').summernote({
                 height: 450,

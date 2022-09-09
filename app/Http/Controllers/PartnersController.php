@@ -118,10 +118,11 @@ class PartnersController extends Controller
         $unid = $request->unid;
         $partners_name = $request->partners_name;
         $partners_logo = $request->partners_logo;
+        $partners_file = $request->partners_file;
         $partners_url = $request->partners_url;
         $partners_status = $request->partners_status;
         $doc_type='partners';
-        $img_group='logo';
+
         $create_time = Carbon::now()->format("Y-m-d H:i:s");
 
         $act = Partners::where('unid','=',$unid)->update([
@@ -136,15 +137,27 @@ class PartnersController extends Controller
         if ($act) {
             if ($request->hasFile('partners_logo')) {
                 $file = $request->file('partners_logo');
+                $pdf_file = $request->file('partners_file');
                 // foreach ($files as $file) {
                 $uploadFile = new uploadFilecontroller();
+                $img_group='logo';
                 $saveimg = $uploadFile->saveLogo($unid, $doc_type,$img_group, $file);
                 if($saveimg!=''){
                     Partners::where('unid','=',$unid)->update(['partners_logo' =>$saveimg]);
                 }
-
-
             }
+
+            if ($request->hasFile('partners_file')) {
+                $pdf_file = $request->file('partners_file');
+                // foreach ($files as $file) {
+                $uploadFile = new uploadFilecontroller();
+                $img_group='file';
+                $saveDocument=$uploadFile->saveDocument($unid, $doc_type,$img_group, $pdf_file);
+                if($saveDocument!=''){
+                    Partners::where('unid','=',$unid)->update(['partners_file' =>$saveDocument]);
+                }
+            }
+
         }
 
         return redirect($doc_type)->with('msg', $act);

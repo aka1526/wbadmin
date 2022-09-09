@@ -45,10 +45,12 @@ $user = auth()->user();
             <a href="/slides"><i class="fa fa-image"></i>Images Slideshow </a>
         </li>
         <li class="">
-            <a href="/partners"><i class="fa fa-sitemap"></i>Partners</a>
+            <a href="/partners"><i class="fa fa-random"></i>Partners</a>
         </li>
 
-
+        <li class="">
+            <a href="/webmenu"><i class="fa fa-sitemap"></i>Web Menu</a>
+        </li>
       </ul>
     </div>
 

@@ -88,7 +88,7 @@
                                     <tr class="even pointer">
                                         <td class="">{{ $dataset->firstItem() + $key }}</td>
                                         <td class="">
-                                            @if($row->mc_img)
+                                            @if($row->customer_logo)
                                             <img src="{{ "/upload/customer/".$row->unid.'/'.$row->customer_logo }}" width="120px" />
                                             @else
                                             <img src="/upload/nopic.png"  width="120px"  />

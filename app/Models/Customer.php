@@ -15,7 +15,7 @@ class Customer extends Model
     protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = false;
-    public $table = 'Customer';
+    public $table = 'customer';
     protected $fillable = [
         'unid ',
         'customer_group',

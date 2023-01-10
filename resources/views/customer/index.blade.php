@@ -89,9 +89,9 @@
                                         <td class="">{{ $dataset->firstItem() + $key }}</td>
                                         <td class="">
                                             @if($row->customer_logo)
-                                            <img src="{{ "/upload/customer/".$row->unid.'/'.$row->customer_logo }}" width="120px" />
+                                            <img src="{{ "/upload/customer/".$row->unid.'/'.$row->customer_logo }}" width="80px" />
                                             @else
-                                            <img src="/upload/nopic.png"  width="120px"  />
+                                            <img src="/upload/nopic.png"  width="80px"  />
                                             @endif
 
                                         </td>

@@ -34,12 +34,22 @@ class NewsController extends Controller
         return $number;
     }
 
+    public function home(Request $request)
+    {
+
+
+        $doc_type =  "news" ;
+
+        $dataset = News::where('doc_type','=',$doc_type)->orderBy('new_date', 'desc')->paginate($this->paging);
+        return view('/news/index', compact('dataset','doc_type'));
+    }
+
+
+
     public function index(Request $request)
     {
 
-        $doc_type = str_replace('/','',$request->getPathInfo());
-        $doc_type = $doc_type =="" ? "/news" : $doc_type;
-
+        $doc_type =  "news" ;
         $dataset = News::where('doc_type','=',$doc_type)->orderBy('new_date', 'desc')->paginate($this->paging);
         return view($doc_type.'/index', compact('dataset','doc_type'));
     }
@@ -225,7 +235,7 @@ class NewsController extends Controller
         }
         return $ext ;
     }
-    
+
     function update(Request $request){
 
         $validated = $request->validate([

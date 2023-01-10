@@ -53,7 +53,7 @@ Route::middleware(['auth'])->group(function(){
 
 
     Route::controller(NewsController::class)->group(function(){
-        Route::get('/','index');
+        Route::get('/','home');
 
         Route::get('/news','index')->name('news.index');
         Route::get('/news/add', 'add')->name('news.add');

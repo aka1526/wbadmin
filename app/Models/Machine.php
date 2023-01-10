@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customerlist extends Model
+class Machine extends Model
 {
     use HasFactory;
     const CREATED_AT = 'create_time';
@@ -15,10 +15,14 @@ class Customerlist extends Model
     protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = false;
-    public $table = 'customerlist';
+    public $table = 'machine';
     protected $fillable = [
         'unid ',
-        'cus_list','cus_name','cus_middle','cus_img','cus_status',
+        'mc_group',
+        'mc_name',
+        'mc_img',
+        'mc_total',
+
         'create_by',
         'create_time',
         'modify_by',
@@ -27,4 +31,4 @@ class Customerlist extends Model
 }
 
 
-
+ 

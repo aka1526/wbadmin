@@ -14,7 +14,7 @@ use App\Models\Uploadfile;
 
 use App\Http\Controllers\uploadFilecontroller;
 
-class CustomersController extends Controller
+class CustomerlistController extends Controller
 {
     protected $paging = 20;
 

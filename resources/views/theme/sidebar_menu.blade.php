@@ -23,7 +23,7 @@ $user = auth()->user();
         <li><a><i class="fa fa-group"></i>Customer<span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
                 <li class="">
-                    <a href="/customers"> Customer List</a>
+                    <a href="/customer"> Customer List</a>
 
                 </li>
                 <li class="">
@@ -48,9 +48,24 @@ $user = auth()->user();
             <a href="/partners"><i class="fa fa-random"></i>Partners</a>
         </li>
 
+
+        <li><a><i class="fa fa-gears"></i>Machines<span class=" fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+                <li class="">
+                    <a href="/machine"> Machine List</a>
+
+                </li>
+                <li class="">
+                    <a href="/machine/group">Machine Group </a>
+                </li>
+            </ul>
+        </li>
+
+
+{{--
         <li class="">
             <a href="/webmenu"><i class="fa fa-sitemap"></i>Web Menu</a>
-        </li>
+        </li> --}}
       </ul>
     </div>
 

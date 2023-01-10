@@ -12,10 +12,14 @@ use App\Http\Controllers\VisitorsController;
 use App\Http\Controllers\TelevisionsController;
 
 use App\Http\Controllers\PartnersController;
-use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\CustomerlistController;
 use App\Http\Controllers\SlidesimgController;
 use App\Http\Controllers\WebmenuController;
 use App\Http\Controllers\WebsubmenuController;
+use App\Http\Controllers\MachinegroupController;
+use App\Http\Controllers\MachineController;
+
+use App\Http\Controllers\CustomerController;
 
 use App\Http\Controllers\AlbumController;
 // Route::get('/', function () {
@@ -150,13 +154,13 @@ Route::middleware(['auth'])->group(function(){
         });
 
 
-        Route::controller(CustomersController::class)->group(function(){
-            Route::get('/customers','index')->name('customers.index');
-            Route::get('/customers/add', 'add')->name('customers.add');
-            Route::post('/customers/save', 'save');
-            Route::get('/customers/edit/{unid}', 'edit')->name('customers.edit');
-            Route::post('/customers/update','update');
-            Route::post('/customers/delete',  'delete')->name('customers.delete');
+        Route::controller(CustomerlistController::class)->group(function(){
+            Route::get('/Customerlist','index')->name('Customerlist.index');
+            Route::get('/Customerlist/add', 'add')->name('Customerlist.add');
+            Route::post('/Customerlist/save', 'save');
+            Route::get('/Customerlist/edit/{unid}', 'edit')->name('Customerlist.edit');
+            Route::post('/Customerlist/update','update');
+            Route::post('/Customerlist/delete',  'delete')->name('Customerlist.delete');
 
         });
 
@@ -201,6 +205,36 @@ Route::middleware(['auth'])->group(function(){
         });
 
 
+        Route::controller(MachinegroupController::class)->group(function(){
+            Route::get('/machine/group','index')->name('machine.group.index');
+             Route::get('/machine/group/add', 'add')->name('machine.group.add');
+            Route::post('/machine/group/save', 'save')->name('machine.group.save');
+            Route::get('/machine/group/edit/{unid}', 'edit')->name('machine.group.edit');
+            Route::post('/machine/group/update','update')->name('machine.group.update');
+            Route::post('/machine/group/delete',  'delete')->name('machine.group.delete');
+
+        });
+
+
+        Route::controller(MachineController::class)->group(function(){
+            Route::get('/machine','index')->name('machine.index');
+             Route::get('/machine/add', 'add')->name('machine.add');
+            Route::post('/machine/save', 'save')->name('machine.save');
+            Route::get('/machine/edit/{unid}', 'edit')->name('machine.edit');
+            Route::post('/machine/update','update')->name('machine.update');
+            Route::post('/machine/delete',  'delete')->name('machine.delete');
+
+        });
+
+        Route::controller(CustomerController::class)->group(function(){
+            Route::get('/customer','index')->name('customer.index');
+            Route::get('/customer/add', 'add')->name('customer.add');
+            Route::post('/customer/save', 'save')->name('customer.save');
+            Route::get('/customer/edit/{unid}', 'edit')->name('customer.edit');
+            Route::post('/customer/update','update')->name('customer.update');
+            Route::post('/customer/delete',  'delete')->name('customer.delete');
+
+        });
 
 
 });
